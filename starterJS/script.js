@@ -142,3 +142,59 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+const books = getBooks()
+console.log(books)
+
+const book = getBook(2)
+//there is two way to Distructure objects
+//1st way
+// const title  = book.title
+// const publicationDate = book.publicationDate
+// const author = book.author
+// const genres = book.genres
+
+//2nd way
+const {title,publicationDate,author,genres}=book;
+console.log(`Title : ${title} , Publication Date : ${publicationDate} , Author : ${author} and Generes : ${genres}`)
+
+///Array Distructuring
+// 1st way
+// const first = genres[0]
+// const second = genres[1]
+
+// 2nd way
+const [first,second] = genres;
+
+console.log(`First : ${first} , Second : ${second}`)
+
+
+///Spread Operator with array
+
+console.log("Genres",genres)
+const newGenres =  [...genres,"Epic drama"]
+console.log("New genres",newGenres)
+
+//Spread Operator with objects
+
+const newBook = {...book,movieReleasedate : "2-1-2021",pages:300}
+
+console.log(newBook)
+
+
+fetch('https://jsonplaceholder.typicode.com/todos')
+.then(result => result.json())
+.then(data=>console.log('Normal',data))
+
+
+
+  const mydata = async function getdata(){
+      let res = await fetch("https://jsonplaceholder.typicode.com/todos");
+      let resdata = await res.json();
+     
+      return resdata
+  }
+// getdata();
+  console.log('main',mydata())
+
+  console.log('Hi everyOne, How are you')
